@@ -1,0 +1,66 @@
+<script>
+   let code =  prompt("Enter ussd code");
+   if(code != null && code == "*384#" ){
+      alert("Welcome to Heros Bank UUSD Banking");
+
+   //fetch userDetails from local storage
+   let UUSDAccountnumber = JSON.parse(localStorage.getItem("UUSDAccountnumber"));
+   let ussdData = {};
+
+      if(UUSDAccountnumber == null){
+
+         alert("oops, You haven't set up your phone number for UUSD banking")
+         //let input = prompt("press \n1 to setup \n2 to exit");
+
+         let input;
+         while (input !== "1" && input !== "2") {
+            input = prompt("Press\n1 to setup\n2 to exit");
+
+            if(input == 1){
+               let accountnumber =  prompt("Enter your Acccount Number \n Acccount Number:");
+               let pin = prompt("Enter your PIN \n PIN:");
+               balance = 2000;
+
+                  if(accountnumber.length == 12){
+
+                     let userData = {
+                           pin: pin,
+                           balance: balance,
+                           accountNumber: accountnumber,
+                           phoneNumber: "",
+                           phoneNumberBalance: 0
+                        }
+
+                     // Store the user data in the ussdData object using accountnumber as the key
+                     ussdData[accountnumber] = userData;
+                     
+                     //storing it in local storage
+                     localStorage.setItem("UUSDDETAILS",  JSON.stringify(ussdData));
+                     localStorage.setItem("UUSDAccountnumber", accountnumber);
+                     
+                     alert("Your phone number has been successfully setup for UUSD banking")
+                     window.location.href = "account.html";
+
+                  }else{
+                     alert("Invalid Account Number, try again")
+                     window.location.href = "index.html";
+                  }
+
+            }else if(input == 2){
+               alert("Thank you for using UUSD banking")
+            }else{
+               alert("invalid input, try again")
+               window.location.href = "index.html";
+            }
+         }
+
+      } else{
+         window.location.href = "account.html";
+
+      }
+   
+   }else{
+       alert("The code enter is not associated with any of our services");
+       window.location.href = "index.html";
+   }
+</script>
