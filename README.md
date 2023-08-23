@@ -7,7 +7,6 @@ Account Number must be 12 digits example (201919113181)
 Phone number must be 11 digits  exmaple (08012345678)
 
 
-- [Live Link](https://ultra-tech-code.github.io/ussd-code-project/index.html)
 
 ## 1. Tech Stack
 This boilerplate uses the following tech stack:
